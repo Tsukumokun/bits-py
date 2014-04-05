@@ -1,0 +1,136 @@
+### LANGUAGES
+
+
+## PYTHON
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.ropeproject
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+bin/
+*/build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Django stuff:
+*.log
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+
+### OPERATING SYSTEMS
+
+## LINUX
+
+*~
+
+# KDE directory preferences
+.directory
+
+*.tar
+*.tar.*
+*.log
+*.log.*
+*.sig
+pkg/
+src/
+
+## OSX
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+*.dSYM
+
+# Icon must ends with two \r.
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+## WINDOWS
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+### EDITORS
+
+## SUBLIME TEXT
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project
+
+### VIM
+
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+
+
