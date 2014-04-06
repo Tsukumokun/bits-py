@@ -102,13 +102,13 @@ class tcaps:
         self._styles = True
 
 
-    def start(self, foreground=None, background=None, attribute=None):
+    def start(self, fg=None, bg=None, attr=None):
         """
         @brief Starts a terminal style as specified
 
-        @param[in] foreground Color to set the foreground to.
-        @param[in] background Color to set the background to.
-        @param[in] attribute  Style to set the attribute to.
+        @param[in] fg   Color to set the foreground to.
+        @param[in] bg   Color to set the background to.
+        @param[in] attr Style to set the attribute to.
 
         @return the string needed to start the specified terminal style
         """
@@ -120,22 +120,22 @@ class tcaps:
         holder = self._escape
 
         # If there is a foreground specified add it to the sequence
-        if foreground != None:
-            holder += '3' + self._colors[foreground] #< ANSI foreground starts with 3
+        if fg != None:
+            holder += '3' + self._colors[fg] #< ANSI foreground starts with 3
             # If either of the others are defined add a semi-colon for formatting
-            if background != None or attribute != None:
+            if bg != None or attr != None:
                 holder += ';'
 
         # If there is a background specified add it to the sequence
-        if background != None:
-            holder += '4' + self._colors[background] #< ANSI background starts with 4
+        if bg != None:
+            holder += '4' + self._colors[bg] #< ANSI background starts with 4
             # If there is also an attribute defined add a semi-color for formatting
-            if attribute != None:
+            if attr != None:
                 holder += ';'
 
         # If there is an attribute specified add it to the sequence
-        if attribute != None:
-            holder += self._attribs[attribute] #< ANSI attributes aren't prefixed
+        if attr != None:
+            holder += self._attribs[attr] #< ANSI attributes aren't prefixed
 
         # Add the modifier ending to the sequence
         holder += 'm'
@@ -143,13 +143,13 @@ class tcaps:
         return holder
 
 
-    def end(self, foreground=False, background=False, attribute=None):
+    def end(self, fg=False, bg=False, attr=None):
         """
         @brief Ends a terminal style as specified
 
-        @param[in] foreground Color to set the foreground to.
-        @param[in] background Color to set the background to.
-        @param[in] attribute Style to set the attribute to.
+        @param[in] fg   Color to set the foreground to.
+        @param[in] bg   Color to set the background to.
+        @param[in] attr Style to set the attribute to.
 
         @return the string needed to end the specified terminal style
         """
@@ -160,22 +160,22 @@ class tcaps:
         holder = self._escape
 
         # If foreground true remove it by writing the default foreground color
-        if foreground:
+        if fg:
             holder += '3' + self._colors['default'] #< ANSI foreground starts with 3
             # If either of the others are defined add a semi-colon for formatting
-            if background or attribute != None:
+            if bg or attr != None:
                 holder += ';'
 
         # If background true remove it by writing the default background color
-        if background:
+        if bg:
             holder += '4' + self._colors['default'] #< ANSI background starts with 4
             # If there is also an attribute defined add a semi-color for formatting
-            if attribute != None:
+            if attr != None:
                 holder += ';'
 
         # If there is an attribute specified add it to the sequence
-        if attribute != None:
-            holder += '2' + self._attribs[attribute]
+        if attr != None:
+            holder += '2' + self._attribs[attr]
 
         # Add the modifier ending to the sequence
         holder += 'm'
