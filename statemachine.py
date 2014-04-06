@@ -183,15 +183,21 @@ class StateMachine:
 
         # Default to and from
         fr = self._current
+        maybe = None
         to = None
 
         # Search for the next appropriate from item
         for items in self._get(['transitions']):
             if items['from'] == self._current:
                 # If the transition is in on, or on is empty (wildcard)
-                # set the to variable
-                if not items['on'] or item in items['on']:
+                # set the to or maybe variable depending
+                if not items['on']:
+                    maybe = items.get('to') or self._current
+                elif item in items['on']:
                     to = items.get('to') or self._current
+
+        # Make sure wildcard is the weakest
+        if not to: to = maybe
 
         # Call error function if no transition existed
         if not to:

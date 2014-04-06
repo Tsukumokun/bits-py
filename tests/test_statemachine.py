@@ -193,3 +193,16 @@ def test_step_error():
     machine = get_machine()
     machine.step(2)
     assert(callbacks == ['error [f=a;o=2;t=None]'])
+
+def test_weak_wildcard():
+    machine = StateMachine({
+        'initial'    : 'a',
+        'transitions': [
+            # A can only go to b on a 1
+            { 'from': 'a', 'on': [1], 'to': 'b'},
+            # Always stay on b without erroring
+            { 'from': 'a', 'on': [ ] }
+        ]
+    })
+    machine.step(1)
+    assert(machine._current == 'b')
